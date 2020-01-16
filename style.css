@@ -2,7 +2,7 @@
 
 
 body{
-    /* background-image: url("../interlaced.png"); */
+   
 }
 
 .main{
@@ -17,12 +17,12 @@ h2{
     margin: 20px 20px 20px 5px;  
     font-size: 24pt;
     font-weight:bold;
-    color: #4aaaa5;
+    color: blue;
 }
 
 .btn {
     color: white;
-    background-color: #4aaaa5;
+    background-color: blue;
 }
 
 
@@ -42,7 +42,7 @@ h2{
     #navUL{
         margin-left: 30%;
    
-      align-content: center; */
-    }
+      align-content: center;
+    } 
 
-} 
+}  */
