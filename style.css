@@ -3,15 +3,10 @@
 
 body{
    
+
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.main{
-
-    background-color: white;
-    margin-top: 20px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-
-}
 
 h2{
     margin: 20px 20px 20px 5px;  
@@ -24,25 +19,3 @@ h2{
     color: white;
     background-color: blue;
 }
-
-
-/* @media screen and (max-width: 640px) {
-    #navbarLogoSM {
-        background-color: blue;
-    }
-    #navbarMenuSM{
-        background-color: white;
-        width: 100%;
-        display: block;
-  
-        margin-right: auto;
-        align-content: center;
-
-    }
-    #navUL{
-        margin-left: 30%;
-   
-      align-content: center;
-    } 
-
-}  */

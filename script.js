@@ -62,33 +62,30 @@ function generatePassword() {
   let numberCharsList = "0123456789";
   let upperCharsList = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   let lowerCharsList = "abcdefghijklmnopqrstuvwxyz";
-  let specialCharsList = "!#$%&()*+-/:<=>?@[^{|}~"; // didn't use the enter list
+  let specialCharsList = "!#$%&()*+-/:<=>?@[^{|}~"; // didn't use the entire list
 
-  // if num // add 1 number to the pass and concat allchar + numbers
-  // if upp // add 1 upp to pass and concat allchar + upp
-  // if low // add 1 low to pass and concat allchar + low
-
-  // set password to an array as can shuffle what get later
+  // set password to an array as can shuffle the values later
   // set allChar which is an array of possible values
   var password = []
   var allChar = []
 
-  // see if user picked a number value.  If so, then put a number in the password
+  // the 4 if statements below pick a random value from the option type the user chooses to make sure there is at least 1 character of that type.  A random of all possibilities may not have each option type
+  // if user picked a number value, then add numbers to the allChar array and put a number in the password
   if (numChar) {
     allChar = allChar + numberCharsList
     password.push(generateChar(numberCharsList))
   }
-  // see if user picked a lower char value.  If so, then put a lower char in the password
+  // if user picked a lower char value, then put a lower char in the password
   if (lowerChar) {
     allChar = allChar + (lowerCharsList)
     password.push(generateChar(lowerCharsList))
   }
-    // see if user picked an upper char value.  If so, then put an upper char in the password
+    // if user picked an upper char value, then put an upper char in the password
   if (upperChar) {
     allChar = allChar + (upperCharsList)
     password.push(generateChar(upperCharsList))
   }
-  // see if user picked a special char value.  If so, then put a special char in the password
+  // if user picked a special char value, then put a special char in the password
   if (specialChar) {
     allChar = allChar + (specialCharsList)
     password.push(generateChar(specialCharsList))
@@ -96,10 +93,10 @@ function generatePassword() {
   // console.log("1'", password)
   // console.log("posibiities", allChar)
 
-  // set a variable foer the password length
+  // set a variable for the password length
   let start = password.length
 
-  // fill the rest of the password array until the password length
+  // fill the rest of the password array until the password length. push appends to the end of the array
   // console.log(userPWLength, start);
   for (var i = start; i < userPWLength; i++) {
     password.push(generateChar(allChar))
@@ -108,43 +105,40 @@ function generatePassword() {
 
   // shuffle before make to a string
 
-
+  shuffle(password);
 
   // .join("") turns an array in to a string
   return password.join("")
  
 
 }
+// picks a random value from the possible values
 function generateChar(arr) {
 
   var index = Math.floor(Math.random() * arr.length)
-  console.log("arr", arr[index])
+  // console.log("arr", arr[index])
   return arr[index]
 
 }
 
-// function shuffleArray(password) {
-//   for (let i = array.length - 1; i > 0; i--) {
-//     let j = Math.floor(Math.random() * (i + 1));
-//     let temp = array[i];
-//     array[i] = array[j];
-//     array[j] = temp;
+// got from https://javascript.info/task/shuffle
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
 
-//     alert("inside function shuffleArray")
-//     alert(array);
-//     alert(i);
-//     alert(j);
-//   }
+    // swap elements array[i] and array[j]
+    // we use "destructuring assignment" syntax to achieve that
+    // same can be written as:
+    // [array[i], array[j]] = [array[j], array[i]];
+        let temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+  }
 
-//   return array;
-// }
-
-
+  return array;
+}
 
 // 6. show generated password on the screen (first attempt can be alert)
-
-
-
 // Assignment Code
 // the first element in the document with the ID "generate" is returned:
 var generateBtn = document.querySelector("#generate");
@@ -161,6 +155,7 @@ function writePassword() {
 
   // removes the disabled attribute in HTML so now the button is clickable after a password is generated
   copyBtn.removeAttribute("disabled");
+  // makes the copy button the field that is highlighted so if hit return it will execute
   copyBtn.focus();
 }
 
@@ -169,10 +164,8 @@ function writePassword() {
 function copyToClipboard() {
   // BONUS 
 
-  // select ID password and execute commands
-  // find i execute the copy command
-
-  //  Get the password field 
+  //  got code from https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+  //  Get the password variable 
     var copyText = document.getElementById("password");
   
     /* Select the text field */
